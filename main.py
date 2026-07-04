@@ -24,3 +24,10 @@ def home():
 @app.get("/products",response_model=List[Product]) 
 def get_products():
     return product
+
+@app.get("/products/{id}")
+def fetch_product(id: int):
+    for p in product:
+        if p["id"] == id:
+            return p
+    return {"error": "product not found"}

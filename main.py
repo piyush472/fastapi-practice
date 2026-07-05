@@ -8,7 +8,7 @@ class Product(BaseModel):
     name:str
     price:float
 
-product=[
+products=[
 {"id": 1, "name": "Laptop", "price": 55000.0},
     {"id": 2, "name": "Mouse", "price": 500.0},
     {"id": 3, "name": "Keyboard", "price": 1200.0},
@@ -23,11 +23,16 @@ def home():
 
 @app.get("/products",response_model=List[Product]) 
 def get_products():
-    return product
+    return products
 
 @app.get("/products/{id}")
 def fetch_product(id: int):
-    for p in product:
+    for p in products:
         if p["id"] == id:
             return p
     return {"error": "product not found"}
+
+@app.post("/product")
+def add_product(product:Product):
+    products.append(product.model_dump())
+    return product

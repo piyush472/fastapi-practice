@@ -44,3 +44,12 @@ def update_products(id: int, product: Product):
             products[i] = product.model_dump()
             return {"message": "product updated successfully!"}
     return {"error": "product not found!"}
+
+@app.delete("/product/{id}")
+def delete_products(id: int):
+    for i in range(len(products)):
+        if products[i]["id"]==id:
+            del products[i]
+            return "product delete successfully!"
+    else:
+        return "product not found!"

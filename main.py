@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
+from database import engine
+import models
+
+models.Base.metadata.create_all(bind=engine)
+
 app=FastAPI()
 
 class Product(BaseModel):
@@ -53,3 +58,4 @@ def delete_products(id: int):
             return "product delete successfully!"
     else:
         return "product not found!"
+    

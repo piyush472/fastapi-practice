@@ -17,7 +17,7 @@ Product management API - add, view, update and delete products. Users can regist
 ## Setup
 
 Clone it:
-git clone https://github.com/piyush472/fastapi-crud-project.git
+git clone https://github.com/piyush472/fastapi-practice
 cd fastapi-crud-project
 
 Create a virtual environment and activate it:
